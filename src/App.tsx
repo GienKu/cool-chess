@@ -1,5 +1,14 @@
+import { useMemo } from 'react';
+import { Chessboard } from './components/Chessboard/Chessboard';
+import { Chess } from 'chess.js';
+
 export const App: React.FC = () => {
-  return <div className="appWrapper">Hello World without CRA!{process.env.NODE_ENV}</div>;
+  const game = useMemo(() => new Chess(), []);
+  return (
+    <div className="appWrapper">
+      <Chessboard board={game.board()} />
+    </div>
+  );
 };
 
 export default App;

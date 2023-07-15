@@ -1,0 +1,32 @@
+.tile {
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: 15px;
+  position: relative;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  span {
+    position: absolute;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    right: 1px;
+    bottom: 0px;
+  }
+
+  @media screen and (max-width: 576px) {
+    padding: 8px;
+  }
+}
+.white-tile {
+  background-color: rgba(206, 219, 226, 1);
+}
+
+.black-tile {
+  background-color: rgba(115, 151, 173, 1);
+}

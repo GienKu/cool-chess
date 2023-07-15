@@ -1,0 +1,7 @@
+.chessboard {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    //grid-template-rows: repeat(8, 1fr);
+  }
