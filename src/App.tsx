@@ -6,7 +6,7 @@ export const App: React.FC = () => {
   const game = useMemo(() => new Chess(), []);
   return (
     <div className="appWrapper">
-      <Chessboard board={game.board()} />
+      <Chessboard game={game} />
     </div>
   );
 };

@@ -8,25 +8,73 @@
     width: 100%;
     object-fit: cover;
     cursor: pointer;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
 
-  span {
+  .tile-id-letter {
     position: absolute;
     font-weight: 800;
     font-size: 12px;
-    text-transform: uppercase;
-    right: 1px;
+
+    left: 1px;
     bottom: 0px;
+  }
+  .tile-id-number {
+    position: absolute;
+    font-weight: 800;
+    font-size: 12px;
+    right: 1px;
+    top: 0px;
+  }
+  .tile-id {
+    position: absolute;
+    font-weight: 800;
+    font-size: 12px;
+    right: 1px;
+    top: 0px;
   }
 
   @media screen and (max-width: 576px) {
     padding: 8px;
   }
 }
-.white-tile {
-  background-color: rgba(206, 219, 226, 1);
+.move-tile {
+  display: none;
+}
+.move-tile-active {
+  display: block;
+  background-color: rgb(77, 133, 168);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.king-in-check {
+  box-shadow: inset -1px 02px 20px 8px rgba(252, 28, 28, 1);
 }
 
-.black-tile {
-  background-color: rgba(115, 151, 173, 1);
+.light-tile {
+  background: linear-gradient(
+      45deg,
+      rgba(206, 219, 226, 1) 20%,
+      rgb(120, 195, 236) 80%
+    ),
+    rgba(206, 219, 226, 1);
+}
+
+.dark-tile {
+  background: linear-gradient(45deg, rgb(1, 103, 165), rgb(151, 214, 248)),
+    rgba(115, 151, 173, 1);
+}
+
+.selected-tile {
+  background: rgb(77, 133, 168);
 }

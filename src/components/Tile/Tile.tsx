@@ -31,20 +31,38 @@ const PIECES_PATHS: { [key: string]: string } = {
 };
 
 interface ITile {
-  color: Color;
-  square: Square;
-  piece: PieceSymbol | null;
+  squareColor: 'light-tile' | 'dark-tile';
+  squareId: Square;
+  pieceOnSquare: PieceSymbol | null;
   pieceColor: Color | null;
+  selected: 'selected-tile' | '';
+  inCheck: 'king-in-check' | '';
+  move: 'move-tile-active' | '';
+  onClick: (square: Square) => void;
 }
 
-export const Tile: React.FC<ITile> = ({ color, piece, pieceColor, square }) => {
+export const Tile: React.FC<ITile> = ({
+  squareColor,
+  pieceOnSquare,
+  pieceColor,
+  squareId,
+  selected,
+  inCheck,
+  move,
+  onClick,
+}) => {
   return (
     <div
-      data-square={square}
-      className={`tile${color === 'b' ? ' black-tile' : ' white-tile'}`}
+      onClick={() => onClick(squareId)}
+      className={`tile ${squareColor} ${selected} ${inCheck}`}
     >
-      {piece && <img src={PIECES_PATHS[pieceColor+piece]} alt="Piece" />}
-      {<span>{square}</span>}
+      {pieceOnSquare && (
+        <img src={PIECES_PATHS[pieceColor + pieceOnSquare]} alt="Piece" />
+      )}
+      {/* {squareId.includes('1') && <span className='tile-id-letter'>{squareId[0]}</span>}
+      {squareId.includes('h') && <span className='tile-id-number'>{squareId[1]}</span>} */}
+      {<span className='tile-id'>{squareId}</span>}
+      {<span className={`move-tile ${move}`}></span>}
     </div>
   );
 };
