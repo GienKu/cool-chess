@@ -43,12 +43,12 @@
     padding: 8px;
   }
 }
-.move-tile {
+.tile::after {
   display: none;
+  content: '';
 }
-.move-tile-active {
+.tile-active::after {
   display: block;
-  background-color: rgb(77, 133, 168);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -56,7 +56,19 @@
   width: 15px;
   height: 15px;
   border-radius: 50%;
+  background: rgb(55, 93, 117);
 }
+
+.attacked-tile-active::after {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: inset 0px 0px 0px 7px rgb(55, 93, 117);
+}
+
 .king-in-check {
   box-shadow: inset -1px 02px 20px 8px rgba(252, 28, 28, 1);
 }
@@ -75,6 +87,16 @@
     rgba(115, 151, 173, 1);
 }
 
-.selected-tile {
+.selected-light {
   background: rgb(77, 133, 168);
+}
+.selected-dark {
+  background: rgb(61, 105, 133);
+}
+
+.last-move-light {
+  background: rgb(83, 144, 181);
+}
+.last-move-dark {
+  background: rgb(61, 105, 133);
 }

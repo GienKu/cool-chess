@@ -30,39 +30,39 @@ const PIECES_PATHS: { [key: string]: string } = {
   wk: wKing,
 };
 
+interface ICoords {
+  x: number;
+  y: number;
+}
 interface ITile {
-  squareColor: 'light-tile' | 'dark-tile';
+  squareCoords: ICoords;
   squareId: Square;
   pieceOnSquare: PieceSymbol | null;
   pieceColor: Color | null;
-  selected: 'selected-tile' | '';
-  inCheck: 'king-in-check' | '';
-  move: 'move-tile-active' | '';
+  classNames: string;
+
   onClick: (square: Square) => void;
 }
 
 export const Tile: React.FC<ITile> = ({
-  squareColor,
+  squareCoords,
   pieceOnSquare,
   pieceColor,
   squareId,
-  selected,
-  inCheck,
-  move,
+  classNames,
   onClick,
 }) => {
+  const { x, y } = squareCoords;
   return (
     <div
       onClick={() => onClick(squareId)}
-      className={`tile ${squareColor} ${selected} ${inCheck}`}
+      className={`tile ${classNames}`}
     >
       {pieceOnSquare && (
         <img src={PIECES_PATHS[pieceColor + pieceOnSquare]} alt="Piece" />
       )}
-      {/* {squareId.includes('1') && <span className='tile-id-letter'>{squareId[0]}</span>}
-      {squareId.includes('h') && <span className='tile-id-number'>{squareId[1]}</span>} */}
-      {<span className='tile-id'>{squareId}</span>}
-      {<span className={`move-tile ${move}`}></span>}
+      {x === 7 ? <span className="tile-id-letter">{squareId[0]}</span> : null}
+      {y === 7 ? <span className="tile-id-number">{squareId[1]}</span> : null}
     </div>
   );
 };
